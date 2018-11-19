@@ -1,17 +1,46 @@
 body{
     background-color: #E3AFBC;
     text-align: center;
+    font-size: 1.2em;
+    
 }
 
 h1{
     background-color: #5D001E;
     color: #E3E2DF;
     padding: 50px;
+    margin: 20px 50px 0px 50px;
+    border: 5px solid #aa3c57;
 }
 
 #controls{
     background-color: #EE4C7C;
+    padding: 20px;
+    margin: 0px 50px;
 }
 #result{
     background-color: #f48aaa;
+    margin: 0px 50px;
+    padding-bottom: 50px;
+    border-bottom: 5px solid #aa3c57;
+    
+}
+h2{
+    margin:0px;
+    
+}
+#controls, #result{
+    border-color: #aa3c57;
+    border-left-style: solid;
+    border-left-width: 5px;
+    border-right-style: solid;
+    border-right-width: 5px;
+}
+
+#lookup{
+    background-color: #7a1f5c;
+    color: #ffb3d9;   
+    border-radius: 5px;
+    font-size: 15px;
+    margin:0px 10px;
 }

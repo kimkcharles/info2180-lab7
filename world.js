@@ -1,18 +1,29 @@
 $(document).ready(function(){
     let httpRequest;
-    let searchButton  = $("#lookup");
-    let searchBar     = $("#country");
-    let resultDiv     = $("#result");
-    var lookup=document.getElementById("country");
+    let searchBtn = $("#lookup");
+    // let lookup_word = $("#country");
+    let results = $("#result");
+    let checkbox = $("#checkbox");
+    var lookup = document.getElementById("country");
+    var response;
+    var url;
+    var searchWord;
     
+    results.html("<h2>RESULTS<h2>");
+    checkbox.prop('checked', false);
     
-    searchButton.click(function(element){
+    searchBtn.click(function(element){
         element.preventDefault();
+        if(checkbox.prop("checked")==true){
+            lookup.value="";
+            url=`world.php?all=true`;
+            
+        }else{
+            
+            searchWord=lookup.value.toLocaleLowerCase().trim();
+            url= `world.php/?country=${searchWord}`;
+        }
         
-        var searchWord=lookup.value.toLocaleLowerCase().trim();
-        var url= `world.php/?country=${searchWord}`;
-        
-        console.log(searchWord);
         httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = getCountryInfo;
         httpRequest.open("GET", url);
@@ -23,26 +34,20 @@ $(document).ready(function(){
     function getCountryInfo(){
         if (httpRequest.readyState === httpRequest.DONE){
             if(httpRequest.status  === 200){
-                //var res=striptags(response);
+                 $(results).empty();
                 response = httpRequest.responseText;
-                //var res=response.replace(/(<([^>]+)>)/ig,"");
-                //alert(res);
-            
-                result.innerHTML=response;
-            
+                if(response.includes("<ul></ul>")){
+                    results.html("<h2>NO RESULTS FOUND!<h2>");
+                }else{
+                    results.html(`<h2>RESULTS</h2>${response}`);
+                }
             } else {
                 alert('There was a problem with the request.');
             }
-            }
         }
+    }
     
     
-    // function striptags(str){
-    //     str = str.replace("<p>","");
-    //     str = str.replace("</p>","\n");
-    //     str = str.replace("<h3>","");
-    //     str = str.replace("</h3>","\n");
-    //     return str;
-    // }
+
     
 })
