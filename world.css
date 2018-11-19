@@ -1,0 +1,17 @@
+body{
+    background-color: #E3AFBC;
+    text-align: center;
+}
+
+h1{
+    background-color: #5D001E;
+    color: #E3E2DF;
+    padding: 50px;
+}
+
+#controls{
+    background-color: #EE4C7C;
+}
+#result{
+    background-color: #f48aaa;
+}
